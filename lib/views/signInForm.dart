@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
-import 'package:profile/profilePage.dart';
+import 'package:profile/views/profilePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileForm extends StatefulWidget {
+  static String routeName = "ProfileForm";
   @override
   _ProfileFormState createState() => _ProfileFormState();
 }

@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:profile/profilePage.dart';
-import 'package:profile/signInForm.dart';
+import 'package:profile/views/profilePage.dart';
+import 'package:profile/views/signInForm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileSplash extends StatefulWidget {
+  static String routeName = "ProfileSplash";
   @override
   _ProfileSplashState createState() => _ProfileSplashState();
 }
@@ -23,27 +24,11 @@ class _ProfileSplashState extends State<ProfileSplash> {
   _saveUsersInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String name = sharedPreferences.getString('name');
-    String contact = sharedPreferences.getString('contact');
-    String dob = sharedPreferences.getString('dob');
 
     if (name != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProfileView(
-            name: name,
-            contact: contact,
-            dob: dob,
-          ),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, ProfileView.routeName);
     } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProfileForm(),
-        ),
-      );
+      Navigator.pushReplacementNamed(context, ProfileForm.routeName);
     }
   }
 
