@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:profile/shared/customDrawer.dart';
 import 'package:profile/views/profilePage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,10 +29,11 @@ class _ProfileFormState extends State<ProfileForm> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: CustomDrawer(),
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'PROFILE FORM',
+            'Profile Form',
             style: TextStyle(
               fontSize: 30.0,
               fontWeight: FontWeight.w900,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profile/shared/constants.dart';
+import 'package:profile/shared/customDrawer.dart';
 import 'package:profile/views/signInForm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,6 +41,7 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: CustomDrawer(),
         appBar: AppBar(
           centerTitle: true,
           elevation: 10.0,
