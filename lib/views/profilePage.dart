@@ -56,51 +56,52 @@ class _ProfileViewState extends State<ProfileView> {
         ),
         body: _name == null
             ? Container()
-            : Center(
-                child: Column(
-                  children: [
-                    SizedBox(height: 10.0),
-                    CircleAvatar(
-                      radius: 81.0,
-                      backgroundColor: Colors.orange.shade800,
-                      child: CircleAvatar(
-                        radius: 80.0,
-                        backgroundImage: AssetImage('images/profile.png'),
-                      ),
-                    ),
-                    SizedBox(height: 20.0),
-                    ProfileDataFields(fieldName: 'Name', data: _name),
-                    ProfileDataFields(fieldName: 'Contact', data: _contact),
-                    ProfileDataFields(
-                      fieldName: 'Date Of Birth',
-                      data: _dob.split(' ')[0],
-                    ),
-                    SizedBox(height: 10.0),
-                    RaisedButton(
-                      child: Text(
-                        'Clear Data',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30.0,
+            : SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10.0),
+                      CircleAvatar(
+                        radius: 81.0,
+                        backgroundColor: Colors.orange.shade800,
+                        child: CircleAvatar(
+                          radius: 80.0,
+                          backgroundImage: AssetImage('images/profile.png'),
                         ),
                       ),
-                      color: Colors.red,
-                      onPressed: () async {
-                        SharedPreferences sharedPreferences =
-                            await SharedPreferences.getInstance();
-                        sharedPreferences.clear().then(
-                              (value) => () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ProfileForm(),
-                                  ),
-                                );
-                              },
-                            );
-                      },
-                    ),
-                  ],
+                      SizedBox(height: 20.0),
+                      ProfileDataFields(fieldName: 'Name', data: _name),
+                      ProfileDataFields(fieldName: 'Contact', data: _contact),
+                      ProfileDataFields(
+                        fieldName: 'Date Of Birth',
+                        data: _dob.split(' ')[0],
+                      ),
+                      SizedBox(height: 10.0),
+                      RaisedButton(
+                        child: Text(
+                          'Clear Data',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30.0,
+                          ),
+                        ),
+                        color: Colors.red,
+                        onPressed: () async {
+                          SharedPreferences sharedPreferences =
+                              await SharedPreferences.getInstance();
+                          setState(() {
+                            sharedPreferences.clear();
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfileForm(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
       ),
